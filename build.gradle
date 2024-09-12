@@ -79,7 +79,8 @@ android {
 
     sourceSets {
         main {
-            res.srcDirs = ['res', 'iconloaderlib/res']
+            res.srcDirs  = ['res',
+                            'iconloaderlib/res']
             java.srcDirs = ['src',
                             'src_plugins',
                             'iconloaderlib/src',
