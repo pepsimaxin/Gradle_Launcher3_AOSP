@@ -1,0 +1,44 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+
+// TODO: Pull out surfaceeffects outside of src and have separate build files there.
+android {
+    sourceSets {
+        main {
+            java.srcDirs = ['src']
+            res.srcDirs = ['res']
+            manifest.srcFile "AndroidManifest.xml"
+        }
+    }
+
+    compileSdk 33
+    defaultConfig {
+        minSdk 33
+        targetSdk 33
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+    tasks.lint.enabled = false
+    tasks.withType(JavaCompile).configureEach {
+        options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+        freeCompilerArgs = ["-Xjvm-default=all"]
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    compileOnly fileTree(include: '*.jar', dir: '../dlibs')
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.0"
+    implementation 'androidx.core:core-animation:1.0.0-alpha02'
+    implementation 'androidx.core:core-ktx:1.9.0'
+    implementation "androidx.core:core:1.9.0"
+    implementation project(':animationlib')
+}

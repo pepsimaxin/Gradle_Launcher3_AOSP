@@ -80,12 +80,15 @@ android {
     sourceSets {
         main {
             res.srcDirs  = ['res',
-                            'iconloaderlib/res']
+                            'iconloaderlib/res',
+                            'SystemUIAnimationLib/res']
             java.srcDirs = ['src',
                             'src_plugins',
                             'iconloaderlib/src',
                             'iconloaderlib/src_full_lib',
-                            'animationlib/src']
+                            'animationlib/src',
+                            'tests/shared',
+                            'SystemUIAimationLib/src']
             manifest.srcFile 'AndroidManifest-common.xml'
             proto {
                 srcDirs = ['protos/', 'protos_overrides/']
@@ -156,11 +159,14 @@ allprojects {
 }
 
 dependencies {
+    implementation fileTree(dir: "libs", include: ['*.jar', '*.aar'])
     implementation "androidx.dynamicanimation:dynamicanimation:${ANDROID_X_VERSION}"
     // noinspection GradleDependency
     implementation "androidx.recyclerview:recyclerview:1.4.0-alpha01"
     implementation "androidx.preference:preference:${ANDROID_X_VERSION}"
     implementation 'com.google.android.material:material:1.11.0'
+    implementation 'androidx.core:core-animation:1.0.0-rc01'
+
     // implementation project(':IconLoader')
     // implementation project(':UiTestsLibLauncher')
     // withQuickstepImplementation project(':SharedLibWrapper')
