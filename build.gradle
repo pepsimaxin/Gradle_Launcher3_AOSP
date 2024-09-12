@@ -84,7 +84,8 @@ android {
             java.srcDirs = ['src',
                             'src_plugins',
                             'iconloaderlib/src',
-                            'iconloaderlib/src_full_lib']
+                            'iconloaderlib/src_full_lib',
+                            'animationlib/src']
             manifest.srcFile 'AndroidManifest-common.xml'
             proto {
                 srcDirs = ['protos/', 'protos_overrides/']
