@@ -79,8 +79,11 @@ android {
 
     sourceSets {
         main {
-            res.srcDirs = ['res']
-            java.srcDirs = ['src', 'src_plugins']
+            res.srcDirs = ['res', 'iconloaderlib/res']
+            java.srcDirs = ['src',
+                            'src_plugins',
+                            'iconloaderlib/src',
+                            'iconloaderlib/src_full_lib']
             manifest.srcFile 'AndroidManifest-common.xml'
             proto {
                 srcDirs = ['protos/', 'protos_overrides/']
