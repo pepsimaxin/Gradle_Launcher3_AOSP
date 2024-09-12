@@ -25,7 +25,7 @@
     <color name="all_set_page_background">#FF000000</color>
 
     <!-- Turn on work apps button -->
-    <color name="work_turn_on_stroke">?androidprv:attr/colorAccentSecondaryVariant</color>
-    <color name="work_fab_bg_color">?androidprv:attr/materialColorPrimaryFixedDim</color>
-    <color name="work_fab_icon_color">?androidprv:attr/materialColorOnPrimaryFixed</color>
+    <color name="work_turn_on_stroke">?attr/colorAccentSecondaryVariant</color>
+    <color name="work_fab_bg_color">?attr/materialColorPrimaryFixedDim</color>
+    <color name="work_fab_icon_color">?attr/materialColorOnPrimaryFixed</color>
 </resources>
