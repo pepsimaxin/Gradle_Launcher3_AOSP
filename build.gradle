@@ -171,6 +171,8 @@ dependencies {
     // implementation project(':UiTestsLibLauncher')
     // withQuickstepImplementation project(':SharedLibWrapper')
 
+    implementation 'com.google.protobuf:protobuf-javalite:3.22.3'
+
     // Recents lib dependency
     withQuickstepImplementation fileTree(dir: "${FRAMEWORK_PREBUILTS_DIR}/quickstep/libs", include: 'sysui_shared.jar')
 
