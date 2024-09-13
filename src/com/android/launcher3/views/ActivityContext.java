@@ -281,15 +281,16 @@ public interface ActivityContext {
 
         InputMethodManager imm = root.getContext().getSystemService(InputMethodManager.class);
         IBinder token = root.getWindowToken();
-        if (imm != null && token != null) {
-            UI_HELPER_EXECUTOR.execute(() -> {
-                if (imm.hideSoftInputFromWindow(token, 0)) {
-                    // log keyboard close event only when keyboard is actually closed
-                    MAIN_EXECUTOR.execute(() ->
-                            getStatsLogManager().logger().log(LAUNCHER_ALLAPPS_KEYBOARD_CLOSED));
-                }
-            });
-        }
+        // Modifier by marco
+//        if (imm != null && token != null) {
+//            UI_HELPER_EXECUTOR.execute(() -> {
+//                if (imm.hideSoftInputFromWindow(token, 0)) {
+//                    // log keyboard close event only when keyboard is actually closed
+//                    MAIN_EXECUTOR.execute(() ->
+//                            getStatsLogManager().logger().log(LAUNCHER_ALLAPPS_KEYBOARD_CLOSED));
+//                }
+//            });
+//        }
     }
 
     /**
