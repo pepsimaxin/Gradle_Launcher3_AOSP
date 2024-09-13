@@ -155,23 +155,23 @@ public class PreloadIconDrawable extends FastBitmapDrawable {
         // Progress color
         float[] m3HCT = new float[3];
         ColorUtils.colorToM3HCT(primaryIconColor, m3HCT);
-        mProgressColor = ColorUtils.M3HCTtoColor(
-                m3HCT[0],
-                m3HCT[1],
-                isDarkMode ? Math.max(m3HCT[2], 55) : Math.min(m3HCT[2], 40));
-
-        // Track color
-        mTrackColor = ColorUtils.M3HCTtoColor(
-                m3HCT[0],
-                16,
-                isDarkMode ? 30 : 90
-        );
-        // Plate color
-        mPlateColor = ColorUtils.M3HCTtoColor(
-                m3HCT[0],
-                isDarkMode ? 36 : 24,
-                isDarkMode ? (isThemed() ? 10 : 20) : 80
-        );
+//        mProgressColor = ColorUtils.M3HCTtoColor(
+//                m3HCT[0],
+//                m3HCT[1],
+//                isDarkMode ? Math.max(m3HCT[2], 55) : Math.min(m3HCT[2], 40));
+//
+//        // Track color
+//        mTrackColor = ColorUtils.M3HCTtoColor(
+//                m3HCT[0],
+//                16,
+//                isDarkMode ? 30 : 90
+//        );
+//        // Plate color
+//        mPlateColor = ColorUtils.M3HCTtoColor(
+//                m3HCT[0],
+//                isDarkMode ? 36 : 24,
+//                isDarkMode ? (isThemed() ? 10 : 20) : 80
+//        );
 
         mSystemAccentColor = preloadColors[PRELOAD_ACCENT_COLOR_INDEX];
         mSystemBackgroundColor = preloadColors[PRELOAD_BACKGROUND_COLOR_INDEX];
