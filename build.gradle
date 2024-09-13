@@ -1,3 +1,13 @@
+allprojects {
+    repositories {
+        maven { url "../../../prebuilts/sdk/current/androidx/m2repository" }
+        maven { url "../../../prebuilts/fullsdk-darwin/extras/android/m2repository" }
+        maven { url "../../../prebuilts/fullsdk-linux/extras/android/m2repository" }
+        mavenCentral()
+        google()
+    }
+}
+
 buildscript {
     repositories {
         mavenCentral()
@@ -5,13 +15,10 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:7.3.1'
-        classpath PROTOBUF_CLASS_PATH
+        classpath 'com.google.protobuf:protobuf-gradle-plugin:0.9.4'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.8.0"
     }
 }
-
-final String ANDROID_TOP = "${rootDir}/../../.."
-final String FRAMEWORK_PREBUILTS_DIR = "${ANDROID_TOP}/prebuilts/framework_intermediates/"
 
 apply plugin: 'com.android.application'
 apply plugin: 'com.google.protobuf'
@@ -52,23 +59,11 @@ android {
         aosp {
             dimension "app"
             applicationId 'com.android.launcher3'
-            testApplicationId 'com.android.launcher3.tests'
-        }
-
-        l3go {
-            dimension "app"
-            applicationId 'com.android.launcher3'
-            testApplicationId 'com.android.launcher3.tests'
         }
 
         withQuickstep {
             dimension "recents"
-
-            minSdkVersion 28
-        }
-
-        withoutQuickstep {
-            dimension "recents"
+            minSdkVersion 33
         }
     }
 
@@ -111,16 +106,8 @@ android {
             }
         }
 
-        aospWithoutQuickstep {
-            manifest.srcFile "AndroidManifest.xml"
-        }
-
         aospWithQuickstep {
             manifest.srcFile "quickstep/AndroidManifest-launcher.xml"
-        }
-
-        withoutQuickstep {
-            java.srcDirs = ['src_ui_overrides']
         }
 
         withQuickstep {
@@ -140,18 +127,10 @@ android {
     }
 }
 
-allprojects {
-    repositories {
-        maven { url "../../../prebuilts/sdk/current/androidx/m2repository" }
-        maven { url "../../../prebuilts/fullsdk-darwin/extras/android/m2repository" }
-        maven { url "../../../prebuilts/fullsdk-linux/extras/android/m2repository" }
-        mavenCentral()
-        google()
-    }
-}
-
 dependencies {
     implementation fileTree(dir: "libs", include: ['*.jar', '*.aar'])
+
+    implementation 'com.google.protobuf:protobuf-javalite:3.22.3'
 
     implementation "com.google.android.material:material:${ANDROID_X_VERSION}"
     implementation "androidx.dynamicanimation:dynamicanimation:${ANDROID_X_VERSION}"
@@ -161,9 +140,8 @@ dependencies {
 
     // noinspection GradleDependency
     implementation "androidx.recyclerview:recyclerview:1.4.0-alpha01"
+    //noinspection GradleDependency
     implementation 'androidx.core:core-animation:1.0.0-rc01'
-    implementation 'com.google.protobuf:protobuf-javalite:3.22.3'
-
 
     api 'com.airbnb.android:lottie:6.3.0'
 }
