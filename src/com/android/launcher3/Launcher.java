@@ -316,9 +316,12 @@ public class Launcher extends StatefulActivity<LauncherState>
     private static final int ON_ACTIVITY_RESULT_ANIMATION_DELAY = 500;
 
     // How long to wait before the new-shortcut animation automatically pans the workspace
-    @VisibleForTesting public static final int NEW_APPS_PAGE_MOVE_DELAY = 500;
+    @VisibleForTesting
+    public static final int NEW_APPS_PAGE_MOVE_DELAY = 500;
     private static final int NEW_APPS_ANIMATION_INACTIVE_TIMEOUT_SECONDS = 5;
-    @Thunk @VisibleForTesting public static final int NEW_APPS_ANIMATION_DELAY = 500;
+    @Thunk
+    @VisibleForTesting
+    public static final int NEW_APPS_ANIMATION_DELAY = 500;
 
     private static final String DISPLAY_WORKSPACE_TRACE_METHOD_NAME = "DisplayWorkspaceFirstFrame";
     private static final String DISPLAY_ALL_APPS_TRACE_METHOD_NAME = "DisplayAllApps";
@@ -381,7 +384,8 @@ public class Launcher extends StatefulActivity<LauncherState>
     private PopupDataProvider mPopupDataProvider;
 
     private IntSet mSynchronouslyBoundPages = new IntSet();
-    @NonNull private IntSet mPagesToBindSynchronously = new IntSet();
+    @NonNull
+    private IntSet mPagesToBindSynchronously = new IntSet();
 
     // We only want to get the SharedPreferences once since it does an FS stat each time we get
     // it from the context.
@@ -431,8 +435,8 @@ public class Launcher extends StatefulActivity<LauncherState>
         mStartupLatencyLogger = createStartupLatencyLogger(
                 sIsNewProcess
                         ? LockedUserState.get(this).isUserUnlockedAtLauncherStartup()
-                            ? COLD
-                            : COLD_DEVICE_REBOOTING
+                        ? COLD
+                        : COLD_DEVICE_REBOOTING
                         : WARM);
         sIsNewProcess = false;
         mStartupLatencyLogger
@@ -610,11 +614,11 @@ public class Launcher extends StatefulActivity<LauncherState>
      *  <li> view handler
      *  <li> state handler
      * </ol>
-     *
+     * <p>
      * A back gesture (a single click on back button, or a swipe back gesture that contains a series
      * of swipe events) should be handled by the same handler from above list. For a new back
      * gesture, a new handler should be regenerated.
-     *
+     * <p>
      * Note that state handler will always be handling the back press event if the previous 3 don't.
      */
     @NonNull
@@ -658,7 +662,8 @@ public class Launcher extends StatefulActivity<LauncherState>
     }
 
     protected LauncherOverlayManager getDefaultOverlay() {
-        return new LauncherOverlayManager() { };
+        return new LauncherOverlayManager() {
+        };
     }
 
     protected OnboardingPrefs<? extends Launcher> createOnboardingPrefs(
@@ -958,7 +963,7 @@ public class Launcher extends StatefulActivity<LauncherState>
                     int newScreenId = ensurePendingDropLayoutExists(presenterPos.screenId);
                     requestArgs.screenId = getCellPosMapper().mapPresenterToModel(
                             presenterPos.cellX, presenterPos.cellY, newScreenId, CONTAINER_DESKTOP)
-                                    .screenId;
+                            .screenId;
                 }
                 final CellLayout dropLayout =
                         mWorkspace.getScreenWithId(presenterPos.screenId);
@@ -1118,7 +1123,7 @@ public class Launcher extends StatefulActivity<LauncherState>
         StatsLogManager.StatsLogger logger = getStatsLogManager().logger();
         if (isResume) {
             logger.withSrcState(LAUNCHER_STATE_BACKGROUND)
-                .withDstState(mStateManager.getState().statsLogOrdinal);
+                    .withDstState(mStateManager.getState().statsLogOrdinal);
             event = LAUNCHER_ONRESUME;
         } else { /* command == Action.Command.STOP */
             logger.withSrcState(mStateManager.getState().statsLogOrdinal)
@@ -1417,7 +1422,7 @@ public class Launcher extends StatefulActivity<LauncherState>
      * @param data The intent describing the shortcut.
      */
     protected void completeAddShortcut(Intent data, int container, int screenId, int cellX,
-            int cellY, PendingRequestArgs args) {
+                                       int cellY, PendingRequestArgs args) {
         if (args.getRequestCode() != REQUEST_CREATE_SHORTCUT
                 || args.getPendingIntent().getComponent() == null) {
             return;
@@ -1427,7 +1432,7 @@ public class Launcher extends StatefulActivity<LauncherState>
         CellLayout layout = getCellLayout(container, screenId);
 
         WorkspaceItemInfo info = PinRequestHelper.createWorkspaceItemFromPinItemRequest(
-                    this, PinRequestHelper.getPinItemRequest(data), 0);
+                this, PinRequestHelper.getPinItemRequest(data), 0);
         if (info == null) {
             Log.e(TAG, "Unable to parse a valid shortcut result");
             return;
@@ -1489,7 +1494,7 @@ public class Launcher extends StatefulActivity<LauncherState>
      */
     @Thunk
     void completeAddAppWidget(int appWidgetId, ItemInfo itemInfo,
-            AppWidgetHostView hostView, LauncherAppWidgetProviderInfo appWidgetInfo) {
+                              AppWidgetHostView hostView, LauncherAppWidgetProviderInfo appWidgetInfo) {
 
         if (appWidgetInfo == null) {
             appWidgetInfo = mAppWidgetManager.getLauncherAppWidgetInfo(appWidgetId);
@@ -1834,7 +1839,7 @@ public class Launcher extends StatefulActivity<LauncherState>
 
     @Override
     public void startIntentSenderForResult(IntentSender intent, int requestCode,
-            Intent fillInIntent, int flagsMask, int flagsValues, int extraFlags, Bundle options) {
+                                           Intent fillInIntent, int flagsMask, int flagsValues, int extraFlags, Bundle options) {
         if (requestCode != -1) {
             mPendingActivityRequestCode = requestCode;
         }
@@ -1852,7 +1857,7 @@ public class Launcher extends StatefulActivity<LauncherState>
      */
     @Override
     public void startSearch(String initialQuery, boolean selectInitialQuery,
-            Bundle appSearchData, boolean globalSearch) {
+                            Bundle appSearchData, boolean globalSearch) {
         if (appSearchData == null) {
             appSearchData = new Bundle();
             appSearchData.putString("source", "launcher-search");
@@ -1890,7 +1895,7 @@ public class Launcher extends StatefulActivity<LauncherState>
     }
 
     void addAppWidgetFromDropImpl(int appWidgetId, ItemInfo info, AppWidgetHostView boundWidget,
-            WidgetAddFlowHandler addFlowHandler) {
+                                  WidgetAddFlowHandler addFlowHandler) {
         if (LOGD) {
             Log.d(TAG, "Adding widget from drop");
         }
@@ -1898,7 +1903,7 @@ public class Launcher extends StatefulActivity<LauncherState>
     }
 
     void addAppWidgetImpl(int appWidgetId, ItemInfo info,
-            AppWidgetHostView boundWidget, WidgetAddFlowHandler addFlowHandler, int delay) {
+                          AppWidgetHostView boundWidget, WidgetAddFlowHandler addFlowHandler, int delay) {
         if (!addFlowHandler.startConfigActivity(this, appWidgetId, info,
                 REQUEST_CREATE_APPWIDGET)) {
             // If the configuration flow was not started, add the widget
@@ -1913,13 +1918,13 @@ public class Launcher extends StatefulActivity<LauncherState>
     }
 
     public void addPendingItem(PendingAddItemInfo info, int container, int screenId,
-            int[] cell, int spanX, int spanY) {
+                               int[] cell, int spanX, int spanY) {
         if (cell == null) {
             CellPos modelPos = getCellPosMapper().mapPresenterToModel(0, 0, screenId, container);
             info.screenId = modelPos.screenId;
         } else {
             CellPos modelPos = getCellPosMapper().mapPresenterToModel(
-                    cell[0],  cell[1], screenId, container);
+                    cell[0], cell[1], screenId, container);
             info.screenId = modelPos.screenId;
             info.cellX = modelPos.cellX;
             info.cellY = modelPos.cellY;
@@ -1997,7 +2002,7 @@ public class Launcher extends StatefulActivity<LauncherState>
      * Creates and adds new folder to CellLayout
      */
     public FolderIcon addFolder(CellLayout layout, int container, final int screenId, int cellX,
-            int cellY) {
+                                int cellY) {
         final FolderInfo folderInfo = new FolderInfo();
 
         // Update the model
@@ -2051,8 +2056,8 @@ public class Launcher extends StatefulActivity<LauncherState>
     /**
      * Unbinds the view for the specified item, and removes the item and all its children.
      *
-     * @param v the view being removed.
-     * @param itemInfo the {@link ItemInfo} for this view.
+     * @param v            the view being removed.
+     * @param itemInfo     the {@link ItemInfo} for this view.
      * @param deleteFromDb whether or not to delete this item from the db.
      */
     public boolean removeItem(View v, final ItemInfo itemInfo, boolean deleteFromDb) {
@@ -2062,13 +2067,13 @@ public class Launcher extends StatefulActivity<LauncherState>
     /**
      * Unbinds the view for the specified item, and removes the item and all its children.
      *
-     * @param v the view being removed.
-     * @param itemInfo the {@link ItemInfo} for this view.
+     * @param v            the view being removed.
+     * @param itemInfo     the {@link ItemInfo} for this view.
      * @param deleteFromDb whether or not to delete this item from the db.
-     * @param reason the resaon for removal.
+     * @param reason       the resaon for removal.
      */
     public boolean removeItem(View v, final ItemInfo itemInfo, boolean deleteFromDb,
-            @Nullable final String reason) {
+                              @Nullable final String reason) {
         if (itemInfo instanceof WorkspaceItemInfo) {
             // Remove the shortcut from the folder before removing it from launcher
             View folderIcon = mWorkspace.getHomescreenIconByItemId(itemInfo.container);
@@ -2238,6 +2243,7 @@ public class Launcher extends StatefulActivity<LauncherState>
 
     /**
      * Sets the next pages to bind synchronously on next bind.
+     *
      * @param pages should not be null.
      */
     public void setPagesToBindSynchronously(@NonNull IntSet pages) {
@@ -2378,7 +2384,7 @@ public class Launcher extends StatefulActivity<LauncherState>
 
     @Override
     public void bindAppsAdded(IntArray newScreens, ArrayList<ItemInfo> addNotAnimated,
-            ArrayList<ItemInfo> addAnimated) {
+                              ArrayList<ItemInfo> addAnimated) {
         // Add the new screens
         if (newScreens != null) {
             // newScreens can contain an empty right panel that is already bound, but not known
@@ -2402,7 +2408,7 @@ public class Launcher extends StatefulActivity<LauncherState>
 
     /**
      * Bind the items start-end from the list.
-     *
+     * <p>
      * Implementation of the method from LauncherModel.Callbacks.
      */
     @Override
@@ -2413,7 +2419,7 @@ public class Launcher extends StatefulActivity<LauncherState>
 
     /**
      * Bind the items start-end from the list.
-     *
+     * <p>
      * Implementation of the method from LauncherModel.Callbacks.
      *
      * @param focusFirstItemForAccessibility true iff the first item to be added to the workspace
@@ -2619,8 +2625,8 @@ public class Launcher extends StatefulActivity<LauncherState>
                 if (appWidgetInfo == null) {
                     getModelWriter().deleteItemFromDatabase(item,
                             "Removing restored widget: id=" + item.appWidgetId
-                            + " belongs to component " + item.providerName + " user " + item.user
-                            + ", as the provider is null and " + removalReason);
+                                    + " belongs to component " + item.providerName + " user " + item.user
+                                    + ", as the provider is null and " + removalReason);
                     return null;
                 }
 
@@ -2676,8 +2682,7 @@ public class Launcher extends StatefulActivity<LauncherState>
                     // update the UI.
                     item.restoreStatus = LauncherAppWidgetInfo.RESTORE_COMPLETED;
                     getModelWriter().updateItemInDatabase(item);
-                }
-                else if (item.hasRestoreFlag(LauncherAppWidgetInfo.FLAG_UI_NOT_READY)
+                } else if (item.hasRestoreFlag(LauncherAppWidgetInfo.FLAG_UI_NOT_READY)
                         && appWidgetInfo.configure != null) {
                     if (mAppWidgetManager.isAppWidgetRestored(item.appWidgetId)) {
                         item.restoreStatus = LauncherAppWidgetInfo.RESTORE_COMPLETED;
@@ -2748,7 +2753,7 @@ public class Launcher extends StatefulActivity<LauncherState>
     @Override
     @TargetApi(Build.VERSION_CODES.S)
     public void onInitialBindComplete(IntSet boundPages, RunnableList pendingTasks,
-            int workspaceItemCount, boolean isBindSync) {
+                                      int workspaceItemCount, boolean isBindSync) {
         mSynchronouslyBoundPages = boundPages;
         mPagesToBindSynchronously = new IntSet();
 
@@ -2843,14 +2848,14 @@ public class Launcher extends StatefulActivity<LauncherState>
      * Similar to {@link #getFirstMatch} but optimized to finding a suitable view for the app close
      * animation.
      *
-     * @param preferredItemId The id of the preferred item to match to if it exists.
-     * @param packageName The package name of the app to match.
-     * @param user The user of the app to match.
+     * @param preferredItemId      The id of the preferred item to match to if it exists.
+     * @param packageName          The package name of the app to match.
+     * @param user                 The user of the app to match.
      * @param supportsAllAppsState If true and we are in All Apps state, looks for view in All Apps.
      *                             Else we only looks on the workspace.
      */
     public @Nullable View getFirstMatchForAppClose(int preferredItemId, String packageName,
-            UserHandle user, boolean supportsAllAppsState) {
+                                                   UserHandle user, boolean supportsAllAppsState) {
         final Predicate<ItemInfo> preferredItem = info ->
                 info != null && info.id == preferredItemId;
         final Predicate<ItemInfo> packageAndUserAndApp = info ->
@@ -2883,7 +2888,7 @@ public class Launcher extends StatefulActivity<LauncherState>
         Folder folder = Folder.getOpen(this);
         if (folder != null) {
             View v = getFirstMatch(Collections.singletonList(
-                    folder.getContent().getCurrentCellLayout().getShortcutsAndWidgets()),
+                            folder.getContent().getCurrentCellLayout().getShortcutsAndWidgets()),
                     preferredItem,
                     packageAndUserAndApp);
             if (v == null) {
@@ -2905,12 +2910,13 @@ public class Launcher extends StatefulActivity<LauncherState>
 
     /**
      * Finds the first view matching the ordered operators across the given viewgroups in order.
+     *
      * @param containers List of ViewGroups to scan, in order of preference.
-     * @param operators List of operators, in order starting from best matching operator.
+     * @param operators  List of operators, in order starting from best matching operator.
      */
     @Nullable
     private static View getFirstMatch(Iterable<ViewGroup> containers,
-            final Predicate<ItemInfo>... operators) {
+                                      final Predicate<ItemInfo>... operators) {
         for (Predicate<ItemInfo> operator : operators) {
             for (ViewGroup container : containers) {
                 View match = mapOverViewGroup(container, operator);
@@ -2968,18 +2974,19 @@ public class Launcher extends StatefulActivity<LauncherState>
      * Informs us that the page transition has ended, so that we can react to the newly selected
      * page if we want to.
      */
-    public void onPageEndTransition() {}
+    public void onPageEndTransition() {
+    }
 
     /**
      * Add the icons for all apps.
-     *
+     * <p>
      * Implementation of the method from LauncherModel.Callbacks.
      */
     @Override
     @TargetApi(Build.VERSION_CODES.S)
     @UiThread
     public void bindAllApplications(AppInfo[] apps, int flags,
-            Map<PackageUserKey, Integer> packageUserKeytoUidMap) {
+                                    Map<PackageUserKey, Integer> packageUserKeytoUidMap) {
         Preconditions.assertUIThread();
         AllAppsStore appsStore = mAppsView.getAppsStore();
         appsStore.setApps(apps, flags, packageUserKeytoUidMap);
@@ -3025,7 +3032,7 @@ public class Launcher extends StatefulActivity<LauncherState>
 
     /**
      * Update the state of a package, typically related to install state.
-     *
+     * <p>
      * Implementation of the method from LauncherModel.Callbacks.
      */
     @Override
@@ -3141,7 +3148,7 @@ public class Launcher extends StatefulActivity<LauncherState>
             shortcutInfos.add(new KeyboardShortcutInfo(getString(R.string.widget_button_text),
                     KeyEvent.KEYCODE_W, KeyEvent.META_CTRL_ON));
         }
-        getSupportedActions(this,  getCurrentFocus()).forEach(la ->
+        getSupportedActions(this, getCurrentFocus()).forEach(la ->
                 shortcutInfos.add(new KeyboardShortcutInfo(
                         la.accessibilityAction.getLabel(), la.keyCode, KeyEvent.META_CTRL_ON)));
         if (!shortcutInfos.isEmpty()) {
@@ -3243,10 +3250,11 @@ public class Launcher extends StatefulActivity<LauncherState>
     }
 
     public TouchController[] createTouchControllers() {
-        return new TouchController[] {getDragController(), new AllAppsSwipeController(this)};
+        return new TouchController[]{getDragController(), new AllAppsSwipeController(this)};
     }
 
-    public void useFadeOutAnimationForLauncherStart(CancellationSignal signal) { }
+    public void useFadeOutAnimationForLauncherStart(CancellationSignal signal) {
+    }
 
     public void onDragLayerHierarchyChanged() {
         updateDisallowBack();
@@ -3287,15 +3295,18 @@ public class Launcher extends StatefulActivity<LauncherState>
         return new LauncherAccessibilityDelegate(this);
     }
 
-    /** Enables/disabled the hotseat prediction icon long press edu for testing. */
+    /**
+     * Enables/disabled the hotseat prediction icon long press edu for testing.
+     */
     @VisibleForTesting
-    public void enableHotseatEdu(boolean enable) {}
+    public void enableHotseatEdu(boolean enable) {
+    }
 
     /**
      * @see LauncherState#getOverviewScaleAndOffset(Launcher)
      */
     public float[] getNormalOverviewScaleAndOffset() {
-        return new float[] {NO_SCALE, NO_OFFSET};
+        return new float[]{NO_SCALE, NO_OFFSET};
     }
 
     public static Launcher getLauncher(Context context) {
@@ -3356,7 +3367,9 @@ public class Launcher extends StatefulActivity<LauncherState>
         return findViewById(R.id.popup_container);
     }
 
-    /** Pauses view updates that should not be run during the app launch animation. */
+    /**
+     * Pauses view updates that should not be run during the app launch animation.
+     */
     public void pauseExpensiveViewUpdates() {
         // Pause page indicator animations as they lead to layer trashing.
         getWorkspace().getPageIndicator().pauseAnimations();
@@ -3369,7 +3382,9 @@ public class Launcher extends StatefulActivity<LauncherState>
         });
     }
 
-    /** Resumes view updates at the end of the app launch animation. */
+    /**
+     * Resumes view updates at the end of the app launch animation.
+     */
     public void resumeExpensiveViewUpdates() {
         getWorkspace().getPageIndicator().skipAnimationsToEnd();
 
