@@ -7,24 +7,7 @@
 
 ## 分支
 
-├── Launcher3
-│   └── android14-release
-
-
-├── common                    # 公共能力层目录
-├── docs                      # 开发指南
-├── feature                   # 公共特性层目录
-│   └── appcenter             # 应用中心
-│   └── bigfolder             # 智能文件夹
-│   ├── form                  # 桌面卡片管理功能
-│   ├── gesturenavigation     # 手势导航
-│   ├── pagedesktop           # 工作区
-│   ├── recents               # 最近任务
-│   ├── settings              # 桌面设置
-│   ├── smartdock             # dock工具栏
-├── product                   # 业务形态层目录
-├── signature                 # 签名证书
-
+├── android14-release
 
 ## 源码参考
 
