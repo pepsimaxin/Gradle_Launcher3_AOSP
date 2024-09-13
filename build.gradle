@@ -91,7 +91,8 @@ android {
                             'SystemUIAimationLib/src']
             manifest.srcFile 'AndroidManifest-common.xml'
             proto {
-                srcDirs = ['protos/', 'protos_overrides/']
+                srcDirs = ['protos/',
+                           'quickstep/protos_overrides/']
             }
         }
 

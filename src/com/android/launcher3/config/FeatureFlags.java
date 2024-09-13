@@ -53,7 +53,7 @@ public final class FeatureFlags {
     private FeatureFlags() { }
 
     public static boolean showFlagTogglerUi(Context context) {
-        return BuildConfig.IS_DEBUG_DEVICE && Utilities.isDevelopersOptionsEnabled(context);
+        return /*BuildConfig.IS_DEBUG_DEVICE && */Utilities.isDevelopersOptionsEnabled(context);
     }
 
     /**
@@ -61,7 +61,7 @@ public final class FeatureFlags {
      * @deprecated Use {@link BuildConfig#IS_STUDIO_BUILD} directly
      */
     @Deprecated
-    public static final boolean IS_STUDIO_BUILD = BuildConfig.IS_STUDIO_BUILD;
+    public static final boolean IS_STUDIO_BUILD = true;//BuildConfig.IS_STUDIO_BUILD;
 
     /**
      * Enable moving the QSB on the 0th screen of the workspace. This is not a configuration feature
