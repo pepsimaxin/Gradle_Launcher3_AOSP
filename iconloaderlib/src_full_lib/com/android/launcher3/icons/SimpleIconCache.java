@@ -34,6 +34,7 @@ import android.util.SparseLongArray;
 
 import androidx.annotation.NonNull;
 
+import com.android.launcher3.R;
 import com.android.launcher3.icons.cache.BaseIconCache;
 
 /**

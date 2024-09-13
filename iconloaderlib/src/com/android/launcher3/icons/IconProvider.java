@@ -50,6 +50,7 @@ import android.provider.Settings;
 import androidx.annotation.Nullable;
 import androidx.core.os.BuildCompat;
 
+import com.android.launcher3.R;
 import com.android.launcher3.util.SafeCloseable;
 
 import java.util.Calendar;

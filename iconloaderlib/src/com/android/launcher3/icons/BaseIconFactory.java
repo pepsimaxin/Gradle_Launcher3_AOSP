@@ -45,6 +45,8 @@ import android.text.TextUtils;
 import java.lang.annotation.Retention;
 import java.util.Objects;
 
+import com.android.launcher3.R;
+
 /**
  * This class will be moved to androidx library. There shouldn't be any dependency outside
  * this package.

@@ -17,6 +17,7 @@
 package com.android.launcher3.icons;
 
 import android.content.Context;
+import com.android.launcher3.R;
 
 /**
  * Wrapper class to provide access to {@link BaseIconFactory} and also to provide pool of this class
