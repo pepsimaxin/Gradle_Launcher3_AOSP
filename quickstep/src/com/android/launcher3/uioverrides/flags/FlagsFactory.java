@@ -18,7 +18,7 @@ package com.android.launcher3.uioverrides.flags;
 
 import static android.app.ActivityThread.currentApplication;
 
-//import static com.android.launcher3.BuildConfig.IS_DEBUG_DEVICE;
+import static com.android.launcher3.DefaultBuildConfig.IS_DEBUG_DEVICE;
 import static com.android.launcher3.config.FeatureFlags.FlagState.DISABLED;
 import static com.android.launcher3.config.FeatureFlags.FlagState.ENABLED;
 import static com.android.launcher3.util.Executors.UI_HELPER_EXECUTOR;
@@ -74,18 +74,18 @@ public class FlagsFactory {
     }
 
     static boolean getEnabledValue(FlagState flagState) {
-//        if (IS_DEBUG_DEVICE) {
-//            switch (flagState) {
-//                case ENABLED:
-//                    return true;
-//                case TEAMFOOD:
-//                    return TEAMFOOD_FLAG.get();
-//                default:
-//                    return false;
-//            }
-//        } else {
+        if (IS_DEBUG_DEVICE) {
+            switch (flagState) {
+                case ENABLED:
+                    return true;
+                case TEAMFOOD:
+                    return TEAMFOOD_FLAG.get();
+                default:
+                    return false;
+            }
+        } else {
             return flagState == ENABLED;
-//        }
+        }
     }
 
     /**
@@ -94,15 +94,15 @@ public class FlagsFactory {
      */
     public static BooleanFlag getDebugFlag(
             int bugId, String key, FlagState flagState, String description) {
-//        if (IS_DEBUG_DEVICE) {
-//            boolean defaultValue = getEnabledValue(flagState);
-//            boolean currentValue = getSharedPreferences().getBoolean(key, defaultValue);
-//            DebugFlag flag = new DebugFlag(key, description, flagState, currentValue);
-//            sDebugFlags.add(flag);
-//            return flag;
-//        } else {
+        if (IS_DEBUG_DEVICE) {
+            boolean defaultValue = getEnabledValue(flagState);
+            boolean currentValue = getSharedPreferences().getBoolean(key, defaultValue);
+            DebugFlag flag = new DebugFlag(key, description, flagState, currentValue);
+            sDebugFlags.add(flag);
+            return flag;
+        } else {
             return new BooleanFlag(getEnabledValue(flagState));
-//        }
+        }
     }
 
     /**
@@ -114,15 +114,15 @@ public class FlagsFactory {
         INSTANCE.mKeySet.add(key);
         boolean defaultValueInCode = getEnabledValue(flagState);
         boolean defaultValue = DeviceConfig.getBoolean(NAMESPACE_LAUNCHER, key, defaultValueInCode);
-//        if (IS_DEBUG_DEVICE) {
-//            boolean currentValue = getSharedPreferences().getBoolean(key, defaultValue);
-//            DebugFlag flag = new DeviceFlag(key, description, flagState, currentValue,
-//                    defaultValueInCode);
-//            sDebugFlags.add(flag);
-//            return flag;
-//        } else {
+        if (IS_DEBUG_DEVICE) {
+            boolean currentValue = getSharedPreferences().getBoolean(key, defaultValue);
+            DebugFlag flag = new DeviceFlag(key, description, flagState, currentValue,
+                    defaultValueInCode);
+            sDebugFlags.add(flag);
+            return flag;
+        } else {
             return new BooleanFlag(defaultValue);
-//        }
+        }
     }
 
     /**
@@ -135,12 +135,12 @@ public class FlagsFactory {
     }
 
     static List<DebugFlag> getDebugFlags() {
-//        if (!IS_DEBUG_DEVICE) {
+        if (!IS_DEBUG_DEVICE) {
             return Collections.emptyList();
-//        }
-//        synchronized (sDebugFlags) {
-//            return new ArrayList<>(sDebugFlags);
-//        }
+        }
+        synchronized (sDebugFlags) {
+            return new ArrayList<>(sDebugFlags);
+        }
     }
 
     /** Returns the SharedPreferences instance backing Debug FeatureFlags. */
@@ -158,25 +158,25 @@ public class FlagsFactory {
      * Dumps the current flags state to the print writer
      */
     public static void dump(PrintWriter pw) {
-//        if (!IS_DEBUG_DEVICE) {
-//            return;
-//        }
-//        pw.println("DeviceFlags:");
-//        synchronized (sDebugFlags) {
-//            for (DebugFlag flag : sDebugFlags) {
-//                if (flag instanceof DeviceFlag) {
-//                    pw.println("  " + flag);
-//                }
-//            }
-//        }
-//        pw.println("DebugFlags:");
-//        synchronized (sDebugFlags) {
-//            for (DebugFlag flag : sDebugFlags) {
-//                if (!(flag instanceof DeviceFlag)) {
-//                    pw.println("  " + flag);
-//                }
-//            }
-//        }
+        if (!IS_DEBUG_DEVICE) {
+            return;
+        }
+        pw.println("DeviceFlags:");
+        synchronized (sDebugFlags) {
+            for (DebugFlag flag : sDebugFlags) {
+                if (flag instanceof DeviceFlag) {
+                    pw.println("  " + flag);
+                }
+            }
+        }
+        pw.println("DebugFlags:");
+        synchronized (sDebugFlags) {
+            for (DebugFlag flag : sDebugFlags) {
+                if (!(flag instanceof DeviceFlag)) {
+                    pw.println("  " + flag);
+                }
+            }
+        }
     }
 
     private void onPropertiesChanged(Properties properties) {

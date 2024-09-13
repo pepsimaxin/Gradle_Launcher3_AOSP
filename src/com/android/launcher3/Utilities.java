@@ -135,10 +135,10 @@ public final class Utilities {
     /**
      * Indicates if the device has a debug build. Should only be used to store additional info or
      * add extra logging and not for changing the app behavior.
-     * @deprecated Use {@link BuildConfig#IS_DEBUG_DEVICE} directly
+     * @deprecated Use {@link DefaultBuildConfig#IS_DEBUG_DEVICE} directly
      */
     @Deprecated
-    public static final boolean IS_DEBUG_DEVICE = BuildConfig.DEBUG; //IS_DEBUG_DEVICE;
+    public static final boolean IS_DEBUG_DEVICE = DefaultBuildConfig.IS_DEBUG_DEVICE;
 
     public static final int TRANSLATE_UP = 0;
     public static final int TRANSLATE_DOWN = 1;

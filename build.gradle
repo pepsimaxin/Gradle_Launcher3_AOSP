@@ -34,6 +34,9 @@ android {
         debug {
             minifyEnabled false
         }
+        release {
+            minifyEnabled false
+        }
     }
 
     compileOptions {
@@ -88,7 +91,9 @@ android {
                             'animationlib/src',
                             'tests/shared',
                             'SystemUIAimationLib/src',
-                            'viewcapturelib/src']
+                            'viewcapturelib/src',
+                            'src_shortcuts_overrides',
+                            'src_build_config']
             manifest.srcFile 'AndroidManifest-common.xml'
             proto {
                 srcDirs = ['protos/',
@@ -107,9 +112,9 @@ android {
 //            manifest.srcFile "tests/AndroidManifest.xml"
 //        }
 
-        aosp {
-            java.srcDirs = ['src_flags', 'src_shortcuts_overrides']
-        }
+//        aosp {
+//            java.srcDirs = ['src_flags', 'src_shortcuts_overrides']
+//        }
 
         aospWithoutQuickstep {
             manifest.srcFile "AndroidManifest.xml"

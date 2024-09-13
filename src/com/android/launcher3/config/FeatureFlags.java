@@ -26,7 +26,7 @@ import android.content.Context;
 
 import androidx.annotation.VisibleForTesting;
 
-import com.android.launcher3.BuildConfig;
+import com.android.launcher3.DefaultBuildConfig;
 import com.android.launcher3.Utilities;
 
 import java.util.function.Predicate;
@@ -53,23 +53,23 @@ public final class FeatureFlags {
     private FeatureFlags() { }
 
     public static boolean showFlagTogglerUi(Context context) {
-        return /*BuildConfig.IS_DEBUG_DEVICE && */Utilities.isDevelopersOptionsEnabled(context);
+        return DefaultBuildConfig.IS_DEBUG_DEVICE && Utilities.isDevelopersOptionsEnabled(context);
     }
 
     /**
      * True when the build has come from Android Studio and is being used for local debugging.
-     * @deprecated Use {@link BuildConfig#IS_STUDIO_BUILD} directly
+     * @deprecated Use {@link DefaultBuildConfig#IS_STUDIO_BUILD} directly
      */
     @Deprecated
-    public static final boolean IS_STUDIO_BUILD = true;//BuildConfig.IS_STUDIO_BUILD;
+    public static final boolean IS_STUDIO_BUILD = DefaultBuildConfig.IS_STUDIO_BUILD;
 
     /**
      * Enable moving the QSB on the 0th screen of the workspace. This is not a configuration feature
      * and should be modified at a project level.
-     * @deprecated Use {@link BuildConfig#QSB_ON_FIRST_SCREEN} directly
+     * @deprecated Use {@link DefaultBuildConfig#QSB_ON_FIRST_SCREEN} directly
      */
     @Deprecated
-    public static final boolean QSB_ON_FIRST_SCREEN = false;//BuildConfig.QSB_ON_FIRST_SCREEN;
+    public static final boolean QSB_ON_FIRST_SCREEN = DefaultBuildConfig.QSB_ON_FIRST_SCREEN;
 
     /**
      * Feature flag to handle define config changes dynamically instead of killing the process.

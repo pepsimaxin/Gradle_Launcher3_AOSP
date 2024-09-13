@@ -7,7 +7,7 @@ import androidx.annotation.MainThread
 import androidx.annotation.VisibleForTesting
 import androidx.core.util.contains
 import androidx.core.util.isEmpty
-import com.android.launcher3.BuildConfig
+import com.android.launcher3.DefaultBuildConfig
 import com.android.launcher3.logging.StatsLogManager.LauncherLatencyEvent
 import com.android.launcher3.logging.StatsLogManager.StatsLatencyLogger.LatencyType
 import com.android.launcher3.util.Preconditions
@@ -115,9 +115,9 @@ open class StartupLatencyLogger(val latencyType: LatencyType) {
     /** @return true if we can log start of [LauncherLatencyEvent] and vice versa. */
     @MainThread
     private fun validateLoggingEventAtStart(event: LauncherLatencyEvent): Boolean {
-//        if (!BuildConfig.IS_STUDIO_BUILD && !isInTest) {
-//            return true
-//        }
+        if (!DefaultBuildConfig.IS_STUDIO_BUILD && !isInTest) {
+            return true
+        }
         if (startTimeByEvent.contains(event.id)) {
             Log.e(TAG, "Cannot restart same ${event.name} event")
             return false
@@ -161,9 +161,9 @@ open class StartupLatencyLogger(val latencyType: LatencyType) {
     /** @return true if we can log end of [LauncherLatencyEvent] and vice versa. */
     @MainThread
     private fun validateLoggingEventAtEnd(event: LauncherLatencyEvent): Boolean {
-//        if (!BuildConfig.IS_STUDIO_BUILD && !isInTest) {
-//            return true
-//        }
+        if (!DefaultBuildConfig.IS_STUDIO_BUILD && !isInTest) {
+            return true
+        }
         if (!startTimeByEvent.contains(event.id)) {
             Log.e(TAG, "Cannot end ${event.name} event before starting it")
             return false
