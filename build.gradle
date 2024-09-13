@@ -102,39 +102,11 @@ android {
             }
         }
 
-//        androidTest {
-//            res.srcDirs = ['tests/res']
-//            java.srcDirs = ['tests/src', 'tests/tapl']
-//            manifest.srcFile "tests/AndroidManifest-common.xml"
-//        }
-//
-//        androidTestDebug {
-//            manifest.srcFile "tests/AndroidManifest.xml"
-//        }
-
-//        aosp {
-//            java.srcDirs = ['src_flags', 'src_shortcuts_overrides']
-//        }
-
         aospWithoutQuickstep {
             manifest.srcFile "AndroidManifest.xml"
         }
 
         aospWithQuickstep {
-            manifest.srcFile "quickstep/AndroidManifest-launcher.xml"
-        }
-
-        l3go {
-            res.srcDirs = ['go/res']
-            java.srcDirs = ['go/src']
-            manifest.srcFile "go/AndroidManifest.xml"
-        }
-
-        l3goWithoutQuickstepDebug {
-            manifest.srcFile "AndroidManifest.xml"
-        }
-
-        l3goWithQuickstepDebug {
             manifest.srcFile "quickstep/AndroidManifest-launcher.xml"
         }
 
