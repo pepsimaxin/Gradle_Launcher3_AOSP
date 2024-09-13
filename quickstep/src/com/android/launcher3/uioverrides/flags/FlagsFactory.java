@@ -18,7 +18,7 @@ package com.android.launcher3.uioverrides.flags;
 
 import static android.app.ActivityThread.currentApplication;
 
-import static com.android.launcher3.BuildConfig.IS_DEBUG_DEVICE;
+//import static com.android.launcher3.BuildConfig.IS_DEBUG_DEVICE;
 import static com.android.launcher3.config.FeatureFlags.FlagState.DISABLED;
 import static com.android.launcher3.config.FeatureFlags.FlagState.ENABLED;
 import static com.android.launcher3.util.Executors.UI_HELPER_EXECUTOR;
@@ -94,15 +94,15 @@ public class FlagsFactory {
      */
     public static BooleanFlag getDebugFlag(
             int bugId, String key, FlagState flagState, String description) {
-        if (IS_DEBUG_DEVICE) {
-            boolean defaultValue = getEnabledValue(flagState);
-            boolean currentValue = getSharedPreferences().getBoolean(key, defaultValue);
-            DebugFlag flag = new DebugFlag(key, description, flagState, currentValue);
-            sDebugFlags.add(flag);
-            return flag;
-        } else {
+//        if (IS_DEBUG_DEVICE) {
+//            boolean defaultValue = getEnabledValue(flagState);
+//            boolean currentValue = getSharedPreferences().getBoolean(key, defaultValue);
+//            DebugFlag flag = new DebugFlag(key, description, flagState, currentValue);
+//            sDebugFlags.add(flag);
+//            return flag;
+//        } else {
             return new BooleanFlag(getEnabledValue(flagState));
-        }
+//        }
     }
 
     /**
