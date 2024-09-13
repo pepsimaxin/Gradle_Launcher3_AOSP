@@ -170,7 +170,7 @@ dependencies {
     implementation "androidx.preference:preference-ktx:${ANDROID_X_VERSION}"
     // noinspection GradleDependency
     implementation "androidx.recyclerview:recyclerview:1.4.0-alpha01"
-    implementation 'com.google.android.material:material:1.11.0'
+    implementation 'com.google.android.material:material:1.12.0'
     implementation 'androidx.core:core-animation:1.0.0-rc01'
     implementation 'com.google.protobuf:protobuf-javalite:3.22.3'
     implementation 'androidx.slice:slice-core:1.0.0'
