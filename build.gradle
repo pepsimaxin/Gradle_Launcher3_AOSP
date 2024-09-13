@@ -81,24 +81,33 @@ android {
 
     sourceSets {
         main {
-            res.srcDirs  = ['res',
-                            'iconloaderlib/res',
-                            'SystemUIAnimationLib/res']
-            java.srcDirs = ['src',
-                            'src_plugins',
-                            'iconloaderlib/src',
-                            'iconloaderlib/src_full_lib',
-                            'animationlib/src',
-                            'tests/shared',
-                            'SystemUIAimationLib/src',
-                            'viewcapturelib/src',
-                            'src_shortcuts_overrides',
-                            'src_build_config']
+            res.srcDirs = [
+                    'res',
+                    'iconloaderlib/res',
+                    'SystemUIAnimationLib/res'
+            ]
+
+            java.srcDirs = [
+                    'src',
+                    'src_plugins',
+                    'iconloaderlib/src',
+                    'iconloaderlib/src_full_lib',
+                    'animationlib/src',
+                    'tests/shared',
+                    'SystemUIAimationLib/src',
+                    'viewcapturelib/src',
+                    'src_shortcuts_overrides',
+                    'src_build_config'
+            ]
+
             manifest.srcFile 'AndroidManifest-common.xml'
+
             proto {
-                srcDirs = ['protos/',
-                           'quickstep/protos_overrides/',
-                           'viewcapturelib/src/com/android/app/viewcapture/proto']
+                srcDirs = [
+                        'protos/',
+                        'quickstep/protos_overrides/',
+                        'viewcapturelib/src/com/android/app/viewcapture/proto'
+                ]
             }
         }
 
