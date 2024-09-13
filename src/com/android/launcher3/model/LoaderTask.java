@@ -111,10 +111,10 @@ import java.util.concurrent.CancellationException;
 
 /**
  * Runnable for the thread that loads the contents of the launcher:
- *   - workspace icons
- *   - widgets
- *   - all apps icons
- *   - deep shortcuts within apps
+ * - workspace icons
+ * - widgets
+ * - all apps icons
+ * - deep shortcuts within apps
  */
 public class LoaderTask implements Runnable {
     private static final String TAG = "LoaderTask";
@@ -151,7 +151,7 @@ public class LoaderTask implements Runnable {
     private String mDbName;
 
     public LoaderTask(@NonNull LauncherAppState app, AllAppsList bgAllAppsList, BgDataModel bgModel,
-            ModelDelegate modelDelegate, @NonNull LauncherBinder launcherBinder) {
+                      ModelDelegate modelDelegate, @NonNull LauncherBinder launcherBinder) {
         mApp = app;
         mBgAllAppsList = bgAllAppsList;
         mBgDataModel = bgModel;
@@ -172,7 +172,7 @@ public class LoaderTask implements Runnable {
         LooperIdleLock idleLock = mLauncherBinder.newIdleLock(this);
         // Just in case mFlushingWorkerThread changes but we aren't woken up,
         // wait no longer than 1sec at a time
-        while (!mStopped && idleLock.awaitLocked(1000));
+        while (!mStopped && idleLock.awaitLocked(1000)) ;
     }
 
     private synchronized void verifyNotStopped() throws CancellationException {
@@ -238,7 +238,7 @@ public class LoaderTask implements Runnable {
             Trace.beginSection("LoadAllApps");
             List<LauncherActivityInfo> allActivityList;
             try {
-               allActivityList = loadAllApps();
+                allActivityList = loadAllApps();
             } finally {
                 Trace.endSection();
             }
@@ -282,7 +282,8 @@ public class LoaderTask implements Runnable {
             verifyNotStopped();
             logASplit("save deep shortcuts in icon cache");
             updateHandler.updateIcons(allDeepShortcuts,
-                    new ShortcutCachingLogic(), (pkgs, user) -> { });
+                    new ShortcutCachingLogic(), (pkgs, user) -> {
+                    });
 
             // Take a break
             waitForIdle();
@@ -485,16 +486,16 @@ public class LoaderTask implements Runnable {
     }
 
     private void processWorkspaceItem(LoaderCursor c,
-            LoaderMemoryLogger memoryLogger,
-            HashMap<PackageUserKey, SessionInfo> installingPkgs,
-            boolean isSdCardReady,
-            PackageUserKey tempPackageKey,
-            WidgetManagerHelper widgetHelper,
-            PackageManagerHelper pmHelper,
-            List<IconRequestInfo<WorkspaceItemInfo>> iconRequestInfos,
-            LongSparseArray<Boolean> unlockedUsers,
-            boolean isSafeMode,
-            List<ShortcutInfo> allDeepShortcuts) {
+                                      LoaderMemoryLogger memoryLogger,
+                                      HashMap<PackageUserKey, SessionInfo> installingPkgs,
+                                      boolean isSdCardReady,
+                                      PackageUserKey tempPackageKey,
+                                      WidgetManagerHelper widgetHelper,
+                                      PackageManagerHelper pmHelper,
+                                      List<IconRequestInfo<WorkspaceItemInfo>> iconRequestInfos,
+                                      LongSparseArray<Boolean> unlockedUsers,
+                                      boolean isSafeMode,
+                                      List<ShortcutInfo> allDeepShortcuts) {
 
         try {
             if (c.user == null) {
@@ -738,7 +739,7 @@ public class LoaderTask implements Runnable {
                     final ComponentName component;
 
                     if ((c.getOptions() & LauncherAppWidgetInfo.OPTION_SEARCH_WIDGET) != 0) {
-                        component  = QsbContainerView.getSearchComponentName(mApp.getContext());
+                        component = QsbContainerView.getSearchComponentName(mApp.getContext());
                         if (component == null) {
                             c.markDeleted("Discarding SearchWidget without packagename ");
                             return;
@@ -1061,7 +1062,7 @@ public class LoaderTask implements Runnable {
 
     @SuppressLint("NewApi") // Already added API check.
     private static void logWidgetInfo(InvariantDeviceProfile idp,
-            LauncherAppWidgetProviderInfo widgetProviderInfo) {
+                                      LauncherAppWidgetProviderInfo widgetProviderInfo) {
         Point cellSize = new Point();
         for (DeviceProfile deviceProfile : idp.supportedProfiles) {
             deviceProfile.getCellSize(cellSize);
