@@ -5,9 +5,10 @@
 1. 基于 AOSP release 分支代码
 2. Gradle 构建，完美运行
 
-# 分支
+## 分支
 
-├── android14-release
+├── Launcher3
+│   └── android14-release
 
 ## 源码参考
 
