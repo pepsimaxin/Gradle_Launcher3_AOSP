@@ -176,7 +176,7 @@ dependencies {
     implementation 'androidx.slice:slice-core:1.0.0'
     implementation 'androidx.slice:slice-builders:1.0.0'
 
-    api 'com.airbnb.android:lottie:3.3.0'
+    api 'com.airbnb.android:lottie:6.3.0'
 }
 
 protobuf {
