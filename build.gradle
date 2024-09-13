@@ -87,11 +87,13 @@ android {
                             'iconloaderlib/src_full_lib',
                             'animationlib/src',
                             'tests/shared',
-                            'SystemUIAimationLib/src']
+                            'SystemUIAimationLib/src',
+                            'viewcapturelib/src']
             manifest.srcFile 'AndroidManifest-common.xml'
             proto {
                 srcDirs = ['protos/',
-                           'quickstep/protos_overrides/']
+                           'quickstep/protos_overrides/',
+                           'viewcapturelib/src/com/android/app/viewcapture/proto']
             }
         }
 
