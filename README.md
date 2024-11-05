@@ -4,11 +4,12 @@
 
 1. 基于 AOSP release 分支代码
 2. Gradle 构建，完美运行
+3. 纯净代码，无任何自定义改动
 
 ## 分支
 
-├── android11-release
-├── android14-release
+├── android_11<br>
+├── android_14
 
 ## 源码参考
 
