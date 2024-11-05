@@ -1,0 +1,33 @@
+apply plugin: 'com.android.library'
+// /frameworks/base/packages/SystemUI/plugin_core/src/com/android/systemui/plugins/
+dependencies {
+    compileOnly fileTree(include: '*.jar', dir: '../dlibs')
+
+}
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion BUILD_TOOLS_VERSION
+
+    sourceSets.main {
+        manifest.srcFile 'AndroidManifest.xml'
+        java.srcDirs = ['src']
+        aidl.srcDirs = ['src']
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+task makeClassesJar(type: Jar) {
+    baseName = "systemUI_plugin_core"
+    extension = "jar"
+    from('build/intermediates/javac/release/classes/')
+    exclude("**/BuildConfig.class")
+    exclude("**/BuildConfig\$*.class")
+    exclude("**/R.class")
+    exclude("**/R\$*.class")
+    //classes jar的输出路径
+    destinationDir = file('../libs')
+}
