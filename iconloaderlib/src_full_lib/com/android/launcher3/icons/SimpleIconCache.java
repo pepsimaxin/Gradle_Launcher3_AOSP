@@ -32,6 +32,7 @@ import android.os.UserHandle;
 import android.os.UserManager;
 import android.util.SparseLongArray;
 
+import com.android.launcher3.R;
 import com.android.launcher3.icons.cache.BaseIconCache;
 
 /**

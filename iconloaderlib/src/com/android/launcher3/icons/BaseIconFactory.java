@@ -25,6 +25,8 @@ import android.os.UserHandle;
 
 import androidx.annotation.NonNull;
 
+import com.android.launcher3.R;
+
 /**
  * This class will be moved to androidx library. There shouldn't be any dependency outside
  * this package.
