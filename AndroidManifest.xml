@@ -42,8 +42,32 @@
         Main launcher activity. When extending only change the name, and keep all the
         attributes and intent filters the same
         -->
-        <activity
+        <!-- 20210331 modified for LAUNCHER_APP start -->
+<!--        <activity
             android:name="com.android.launcher3.Launcher"
+            android:launchMode="singleTask"
+            android:clearTaskOnLaunch="true"
+            android:stateNotNeeded="true"
+            android:windowSoftInputMode="adjustPan"
+            android:screenOrientation="portrait"
+            android:configChanges="keyboard|keyboardHidden|mcc|mnc|navigation|orientation|screenSize|screenLayout|smallestScreenSize"
+            android:resizeableActivity="true"
+            android:resumeWhilePausing="true"
+            android:taskAffinity=""
+            android:enabled="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.HOME" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.MONKEY"/>
+                <category android:name="android.intent.category.LAUNCHER_APP" />
+            </intent-filter>
+            <meta-data
+                android:name="com.android.launcher3.grid.control"
+                android:value="${packageName}.grid_control" />
+        </activity>-->
+        <activity
+            android:name="com.android.launcher3.uioverrides.QuickstepLauncher"
             android:launchMode="singleTask"
             android:clearTaskOnLaunch="true"
             android:stateNotNeeded="true"
