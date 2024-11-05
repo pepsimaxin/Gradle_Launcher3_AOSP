@@ -5,7 +5,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath GRADLE_CLASS_PATH
+        classpath 'com.android.tools.build:gradle:4.2.0'
         classpath PROTOBUF_CLASS_PATH
     }
 }
@@ -169,7 +169,12 @@ dependencies {
 protobuf {
     // Configure the protoc executable
     protoc {
+        // 通用 artifact
         artifact = 'com.google.protobuf:protoc:3.0.0'
+        // MacOS
+        if (org.gradle.internal.os.OperatingSystem.current().isMacOsX()) {
+            artifact = 'com.google.protobuf:protoc:3.0.0:osx-x86_64'
+        }
 
         generateProtoTasks {
             all().each { task ->
