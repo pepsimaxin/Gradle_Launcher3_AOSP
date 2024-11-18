@@ -18,3 +18,8 @@
 ## Gradle 构建指导
 
 [Launcher 背后的魔法：Gradle 构建与编译全攻略（超详细 + Android 14.0）](https://blog.csdn.net/pepsimaxin/article/details/142209682?spm=1001.2014.3001.5501)
+
+Tips：
+最近发现不少朋友好像对 Launcher3 14 的 Gradle 编译比较感兴趣，会出现各种报错问题，解决不了的加下微信吧，帮你们解决！
+
+Wechat: pepsimaxin
