@@ -10,7 +10,7 @@
 
 | branch | Gradle |
 |:- |:- |
-| android_15 | ❎ 暂未适配 |
+| android_15_release | ❎ 暂未适配 |
 | android_14 | ✅ 已适配 |
 | android_13 | ❎ 暂未适配 |
 | android_11 | ✅ 已适配 |
