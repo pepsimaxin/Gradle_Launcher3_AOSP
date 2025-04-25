@@ -1,4 +1,4 @@
-![7tXbUY.png](https://v1.ax1x.com/2025/04/25/7tXbUY.png)
+[![7tXg2H.png](https://v1.ax1x.com/2025/04/25/7tXg2H.png)](https://zimgs.com/i/7tXg2H)
 
 # Gradle_Launcher3_AOSP
 
