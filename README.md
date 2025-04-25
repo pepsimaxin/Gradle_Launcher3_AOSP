@@ -8,10 +8,10 @@
 
 ## 分支
 
-├── android_15 -- 暂未适配 Gradle<br>
-├── android_14 -- Gradle<br>
-├── android_13 -- 暂未适配 Gradle<br>
-├── android_11 -- Gradle
+├── android_15 ❎ 暂未适配 Gradle<br>
+├── android_14 ✅ Gradle<br>
+├── android_13 ❎ 暂未适配 Gradle<br>
+├── android_11 ✅ Gradle
 
 ## 源码参考
 
