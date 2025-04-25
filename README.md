@@ -1,7 +1,5 @@
 [![7tXg2H.png](https://v1.ax1x.com/2025/04/25/7tXg2H.png)](https://zimgs.com/i/7tXg2H)
 
-# Gradle_Launcher3_AOSP
-
 ## 说明
 
 1. 基于 AOSP release 分支代码
