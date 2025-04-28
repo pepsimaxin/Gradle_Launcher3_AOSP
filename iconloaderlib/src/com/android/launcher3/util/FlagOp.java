@@ -28,14 +28,26 @@ public interface FlagOp {
      * Returns a new OP which adds the provided flag after applying all previous operations
      */
     default FlagOp addFlag(int flag) {
-        return i -> apply(i) | flag;
+        //return i -> apply(i) | flag;
+        return new FlagOp() {
+            @Override
+            public int apply(int i) {
+                return FlagOp.this.apply(i) | flag;
+            }
+        };
     }
 
     /**
      * Returns a new OP which removes the provided flag after applying all previous operations
      */
     default FlagOp removeFlag(int flag) {
-        return i -> apply(i) & ~flag;
+        //return i -> apply(i) & ~flag;
+        return new FlagOp() {
+            @Override
+            public int apply(int i) {
+                return FlagOp.this.apply(i) & ~flag;
+            }
+        };
     }
 
     /**
