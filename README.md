@@ -10,13 +10,13 @@
 
 ## 📜 Branch
 
-| Branch | Gradle |
-|:- |:- |
-| android_15_release | ❎ 暂未适配 |
-| android-14.0.0_r28 | ❎ 已适配（Android 14 的小伙伴直接用这个分支就可以开发了） |
-| android_14 | ✅ 已适配 |
-| android_13 | ❎ 暂未适配 |
-| android_11 | ✅ 已适配 |
+| Branch | Gradle | Updated |
+|:- |:- |:- |
+| android_15_release | ❎ 暂未适配 | - |
+| android-14.0.0_r28 | ❎ 已适配（Android 14 的小伙伴直接用这个分支就可以开发了） | 2025.04.28 |
+| android_14 | ✅ 已适配 | - |
+| android_13 | ❎ 暂未适配 | - |
+| android_11 | ✅ 已适配 | - |
 
 ## 📜 android.jar
 
