@@ -30,4 +30,4 @@ Jar 包我放在 Release 里面了：SDK-34-android.jar -> 下载 android.jar_fo
 
 ## 📜 Gradle Guide
 
-[Launcher 背后的魔法：Gradle 构建与编译全攻略（超详细 + Android 14.0）](Launcher 背后的魔法:Gradle 构建与编译全攻略(超详细 + Android 14.0)_launcher3 gradle编译-CSDN博客)
+[Launcher 背后的魔法:Gradle 构建与编译全攻略(超详细 + Android 14.0)](https://blog.csdn.net/pepsimaxin/article/details/142209682)
