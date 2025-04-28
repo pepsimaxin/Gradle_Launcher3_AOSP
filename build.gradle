@@ -32,6 +32,7 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }
+
     buildTypes {
         debug {
             minifyEnabled false
@@ -41,10 +42,6 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_17
         targetCompatibility JavaVersion.VERSION_17
-    }
-
-    kotlin {
-        jvmToolchain(17)
     }
 
     // The flavor dimensions for build variants (e.g. aospWithQuickstep, aospWithoutQuickstep)
@@ -61,7 +58,6 @@ android {
         l3go {
             dimension "app"
             applicationId 'com.android.launcher3'
-            testApplicationId 'com.android.launcher3.tests'
         }
 
         withQuickstep {
@@ -75,31 +71,42 @@ android {
         }
     }
 
-    kotlinOptions {
-        // 设置 Kotlin 代码编译后生成的字节码目标版本为 Java 8。
-        // 即使你使用的是较新的 JDK（例如 JDK 17），编译后的字节码也会兼容 Java 8
-        jvmTarget = '1.8'
-        freeCompilerArgs = ["-Xjvm-default=all"]
-    }
-
-    // Disable release builds for now
-    android.variantFilter { variant ->
-        if (variant.buildType.name.endsWith('release')) {
-            variant.setIgnore(true)
-        }
-    }
+//    // Disable release builds for now
+//    android.variantFilter { variant ->
+//        if (variant.buildType.name.endsWith('release')) {
+//            variant.setIgnore(true)
+//        }
+//    }
 
     sourceSets {
         main {
-            res.srcDirs = ['res', 'iconloaderlib/res', 'SystemUIAnimationLib/res']
-            java.srcDirs = ['src', 'src_plugins', 'iconloaderlib/src', 'iconloaderlib/src_full_lib', 'animationlib/src', 'tests/shared',
-            'SystemUIAimationLib/src', 'viewcapturelib/src']
+            res.srcDirs = [
+                    'res',
+                    'iconloaderlib/res',
+                    'SystemUIAnimationLib/res'
+            ]
+
+            java.srcDirs = [
+                    'src',
+                    'src_plugins',
+                    'iconloaderlib/src',
+                    'iconloaderlib/src_full_lib',
+                    'animationlib/src',
+                    'tests/shared',
+                    'SystemUIAimationLib/src',
+                    'viewcapturelib/src',
+                    'src_shortcuts_overrides',
+                    'src_build_config',
+            ]
+
             manifest.srcFile 'AndroidManifest-common.xml'
+
             proto {
-//                srcDirs = ['protos/', 'protos_overrides/']
-                srcDirs = ['protos/',
-                           'quickstep/protos_overrides/',
-                'viewcapturelib/src/com/android/app/viewcapture/proto']
+                srcDirs = [
+                        'protos/',
+                        'quickstep/protos_overrides/',
+                        'viewcapturelib/src/com/android/app/viewcapture/proto'
+                ]
             }
         }
 
@@ -113,41 +120,50 @@ android {
 //            manifest.srcFile "tests/AndroidManifest.xml"
 //        }
 
-        aosp {
-            java.srcDirs = ['src_flags', 'src_shortcuts_overrides']
-        }
+//        aosp {
+//            java.srcDirs = ['src_flags', 'src_shortcuts_overrides']
+//        }
 
-        aospWithoutQuickstep {
-            manifest.srcFile "AndroidManifest.xml"
-        }
+//        aospWithoutQuickstep {
+//            manifest.srcFile "AndroidManifest.xml"
+//        }
 
         aospWithQuickstep {
             manifest.srcFile "quickstep/AndroidManifest-launcher.xml"
         }
 
-        l3go {
-            res.srcDirs = ['go/res']
-            java.srcDirs = ['go/src']
-            manifest.srcFile "go/AndroidManifest.xml"
-        }
-
-        l3goWithoutQuickstepDebug {
-            manifest.srcFile "AndroidManifest.xml"
-        }
-
-        l3goWithQuickstepDebug {
-            manifest.srcFile "quickstep/AndroidManifest-launcher.xml"
-        }
-
-        withoutQuickstep {
-            java.srcDirs = ['src_ui_overrides']
-        }
+//        l3go {
+//            res.srcDirs = ['go/res']
+//            java.srcDirs = ['go/src']
+//            manifest.srcFile "go/AndroidManifest.xml"
+//        }
+//
+//        l3goWithoutQuickstepDebug {
+//            manifest.srcFile "AndroidManifest.xml"
+//        }
+//
+//        l3goWithQuickstepDebug {
+//            manifest.srcFile "quickstep/AndroidManifest-launcher.xml"
+//        }
+//
+//        withoutQuickstep {
+//            java.srcDirs = ['src_ui_overrides']
+//        }
 
         withQuickstep {
             res.srcDirs = ['quickstep/res', 'quickstep/recents_ui_overrides/res']
             java.srcDirs = ['quickstep/src', 'quickstep/recents_ui_overrides/src']
             manifest.srcFile "quickstep/AndroidManifest.xml"
         }
+    }
+
+    kotlin {
+        jvmToolchain(17)
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+        freeCompilerArgs = ["-Xjvm-default=all"]
     }
 }
 
