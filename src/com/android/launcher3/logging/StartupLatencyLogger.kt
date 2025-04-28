@@ -115,9 +115,10 @@ open class StartupLatencyLogger(val latencyType: LatencyType) {
     /** @return true if we can log start of [LauncherLatencyEvent] and vice versa. */
     @MainThread
     private fun validateLoggingEventAtStart(event: LauncherLatencyEvent): Boolean {
-        if (!BuildConfig.IS_STUDIO_BUILD && !isInTest) {
-            return true
-        }
+        // gradle 编译报错：注释掉
+//        if (!BuildConfig.IS_STUDIO_BUILD && !isInTest) {
+//            return true
+//        }
         if (startTimeByEvent.contains(event.id)) {
             Log.e(TAG, "Cannot restart same ${event.name} event")
             return false
@@ -161,9 +162,10 @@ open class StartupLatencyLogger(val latencyType: LatencyType) {
     /** @return true if we can log end of [LauncherLatencyEvent] and vice versa. */
     @MainThread
     private fun validateLoggingEventAtEnd(event: LauncherLatencyEvent): Boolean {
-        if (!BuildConfig.IS_STUDIO_BUILD && !isInTest) {
-            return true
-        }
+        // gradle 编译报错：注释掉
+//        if (!BuildConfig.IS_STUDIO_BUILD && !isInTest) {
+//            return true
+//        }
         if (!startTimeByEvent.contains(event.id)) {
             Log.e(TAG, "Cannot end ${event.name} event before starting it")
             return false

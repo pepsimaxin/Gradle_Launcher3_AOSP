@@ -39,8 +39,12 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    kotlin {
+        jvmToolchain(17)
     }
 
     // The flavor dimensions for build variants (e.g. aospWithQuickstep, aospWithoutQuickstep)
@@ -87,23 +91,26 @@ android {
 
     sourceSets {
         main {
-            res.srcDirs = ['res', 'iconloaderlib/res']
-            java.srcDirs = ['src', 'src_plugins', 'iconloaderlib/src', 'iconloaderlib/src_full_lib']
+            res.srcDirs = ['res', 'iconloaderlib/res', 'SystemUIAnimationLib/res']
+            java.srcDirs = ['src', 'src_plugins', 'iconloaderlib/src', 'iconloaderlib/src_full_lib', 'animationlib/src', 'tests/shared',
+            'SystemUIAimationLib/src']
             manifest.srcFile 'AndroidManifest-common.xml'
             proto {
-                srcDirs = ['protos/', 'protos_overrides/']
+//                srcDirs = ['protos/', 'protos_overrides/']
+                srcDirs = ['protos/',
+                           'quickstep/protos_overrides/']
             }
         }
 
-        androidTest {
-            res.srcDirs = ['tests/res']
-            java.srcDirs = ['tests/src', 'tests/tapl']
-            manifest.srcFile "tests/AndroidManifest-common.xml"
-        }
-
-        androidTestDebug {
-            manifest.srcFile "tests/AndroidManifest.xml"
-        }
+//        androidTest {
+//            res.srcDirs = ['tests/res']
+//            java.srcDirs = ['tests/src', 'tests/tapl']
+//            manifest.srcFile "tests/AndroidManifest-common.xml"
+//        }
+//
+//        androidTestDebug {
+//            manifest.srcFile "tests/AndroidManifest.xml"
+//        }
 
         aosp {
             java.srcDirs = ['src_flags', 'src_shortcuts_overrides']
@@ -154,10 +161,13 @@ allprojects {
 }
 
 dependencies {
+    implementation fileTree(dir: "libs", include: ['*.jar', '*.aar'])
     implementation "androidx.dynamicanimation:dynamicanimation:1.1.0-alpha03"
     implementation "androidx.recyclerview:recyclerview:1.4.0-alpha01"
     implementation "androidx.preference:preference:${ANDROID_X_VERSION}"
     implementation 'com.google.android.material:material:1.11.0'
+    implementation 'androidx.core:core-animation:1.0.0-rc01'
+    implementation 'com.google.protobuf:protobuf-javalite:3.22.3'
     // implementation project(':IconLoader')
     // implementation project(':UiTestsLibLauncher')
     // withQuickstepImplementation project(':SharedLibWrapper')
