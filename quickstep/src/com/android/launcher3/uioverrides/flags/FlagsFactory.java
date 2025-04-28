@@ -18,7 +18,7 @@ package com.android.launcher3.uioverrides.flags;
 
 import static android.app.ActivityThread.currentApplication;
 
-import static com.android.launcher3.BuildConfig.IS_DEBUG_DEVICE;
+import static com.android.launcher3.DefaultBuildConfig.IS_DEBUG_DEVICE;
 import static com.android.launcher3.config.FeatureFlags.FlagState.DISABLED;
 import static com.android.launcher3.config.FeatureFlags.FlagState.ENABLED;
 import static com.android.launcher3.util.Executors.UI_HELPER_EXECUTOR;

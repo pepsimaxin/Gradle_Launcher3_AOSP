@@ -50,7 +50,7 @@ import androidx.core.content.FileProvider;
 
 import com.android.internal.app.ChooserActivity;
 import com.android.internal.util.ScreenshotRequest;
-import com.android.launcher3.BuildConfig;
+import com.android.launcher3.DefaultBuildConfig;
 import com.android.quickstep.SystemUiProxy;
 import com.android.systemui.shared.recents.model.Task;
 
@@ -66,7 +66,7 @@ import java.util.function.Supplier;
  */
 public class ImageActionUtils {
 
-    private static final String AUTHORITY = BuildConfig.APPLICATION_ID + ".overview.fileprovider";
+    private static final String AUTHORITY = DefaultBuildConfig.APPLICATION_ID + ".overview.fileprovider";
     private static final long FILE_LIFE = 1000L /*ms*/ * 60L /*s*/ * 60L /*m*/ * 24L /*h*/;
     private static final String SUB_FOLDER = "Overview";
     private static final String BASE_NAME = "overview_image_";

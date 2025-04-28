@@ -16,7 +16,7 @@
 
 package com.android.launcher3;
 
-public final class BuildConfig {
+public final class DefaultBuildConfig {
     public static final String APPLICATION_ID = "com.android.launcher3";
 
     public static final boolean IS_STUDIO_BUILD = false;

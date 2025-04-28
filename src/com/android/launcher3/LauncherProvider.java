@@ -48,7 +48,7 @@ import java.util.ArrayList;
 public class LauncherProvider extends ContentProvider {
     private static final String TAG = "LauncherProvider";
 
-    public static final String AUTHORITY = BuildConfig.APPLICATION_ID + ".settings";
+    public static final String AUTHORITY = DefaultBuildConfig.APPLICATION_ID + ".settings";
 
     /**
      * $ adb shell dumpsys activity provider com.android.launcher3

@@ -29,6 +29,8 @@ import android.graphics.ColorFilter;
 import android.graphics.Paint;
 import android.graphics.Rect;
 
+import com.android.launcher3.R;
+
 /**
  * Class to handle monochrome themed app icons
  */

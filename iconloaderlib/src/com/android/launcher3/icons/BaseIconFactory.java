@@ -40,6 +40,7 @@ import androidx.annotation.IntDef;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.android.launcher3.R;
 import com.android.launcher3.icons.BitmapInfo.Extender;
 import com.android.launcher3.util.FlagOp;
 

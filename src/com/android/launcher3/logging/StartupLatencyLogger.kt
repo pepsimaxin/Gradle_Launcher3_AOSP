@@ -7,7 +7,6 @@ import androidx.annotation.MainThread
 import androidx.annotation.VisibleForTesting
 import androidx.core.util.contains
 import androidx.core.util.isEmpty
-import com.android.launcher3.BuildConfig
 import com.android.launcher3.logging.StatsLogManager.LauncherLatencyEvent
 import com.android.launcher3.logging.StatsLogManager.StatsLatencyLogger.LatencyType
 import com.android.launcher3.util.Preconditions
