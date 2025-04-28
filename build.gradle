@@ -4,8 +4,10 @@ buildscript {
         google()
     }
     dependencies {
+        classpath 'com.android.tools.build:gradle:7.3.1'
         classpath GRADLE_CLASS_PATH
         classpath PROTOBUF_CLASS_PATH
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.8.0"
     }
 }
 
@@ -14,9 +16,11 @@ final String FRAMEWORK_PREBUILTS_DIR = "${ANDROID_TOP}/prebuilts/framework_inter
 
 apply plugin: 'com.android.application'
 apply plugin: 'com.google.protobuf'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
 
 android {
-    compileSdkVersion COMPILE_SDK
+    compileSdkVersion 34
     buildToolsVersion BUILD_TOOLS_VERSION
 
     defaultConfig {
@@ -65,6 +69,13 @@ android {
         withoutQuickstep {
             dimension "recents"
         }
+    }
+
+    kotlinOptions {
+        // 设置 Kotlin 代码编译后生成的字节码目标版本为 Java 8。
+        // 即使你使用的是较新的 JDK（例如 JDK 17），编译后的字节码也会兼容 Java 8
+        jvmTarget = '1.8'
+        freeCompilerArgs = ["-Xjvm-default=all"]
     }
 
     // Disable release builds for now
@@ -143,12 +154,13 @@ allprojects {
 }
 
 dependencies {
-    implementation "androidx.dynamicanimation:dynamicanimation:${ANDROID_X_VERSION}"
-    implementation "androidx.recyclerview:recyclerview:${ANDROID_X_VERSION}"
+    implementation "androidx.dynamicanimation:dynamicanimation:1.1.0-alpha03"
+    implementation "androidx.recyclerview:recyclerview:1.4.0-alpha01"
     implementation "androidx.preference:preference:${ANDROID_X_VERSION}"
-    implementation project(':IconLoader')
+    implementation 'com.google.android.material:material:1.11.0'
+    // implementation project(':IconLoader')
     // implementation project(':UiTestsLibLauncher')
-    withQuickstepImplementation project(':SharedLibWrapper')
+    // withQuickstepImplementation project(':SharedLibWrapper')
 
     // Recents lib dependency
     withQuickstepImplementation fileTree(dir: "${FRAMEWORK_PREBUILTS_DIR}/quickstep/libs", include: 'sysui_shared.jar')

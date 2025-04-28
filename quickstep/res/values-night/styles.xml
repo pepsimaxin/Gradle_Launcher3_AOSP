@@ -67,16 +67,16 @@
     <style name="GestureTutorialActivity" parent="@style/AppTheme">
         <item name="background">@android:color/transparent</item>
         <item name="tutorialSubtitle">@android:color/white</item>
-        <item name="surfaceContainer">?androidprv:attr/materialColorSurfaceContainer</item>
-        <item name="onSurfaceHome">?androidprv:attr/materialColorPrimaryFixedDim</item>
-        <item name="surfaceHome">?androidprv:attr/materialColorOnPrimaryFixedVariant</item>
-        <item name="secondaryHome">?androidprv:attr/materialColorOnPrimaryFixed</item>
-        <item name="onSurfaceBack">?androidprv:attr/materialColorTertiaryFixedDim</item>
-        <item name="surfaceBack">?androidprv:attr/materialColorOnTertiaryFixedVariant</item>
-        <item name="secondaryBack">?androidprv:attr/materialColorOnTertiaryFixed</item>
-        <item name="onSurfaceOverview">?androidprv:attr/materialColorPrimaryFixed</item>
-        <item name="surfaceOverview">?androidprv:attr/materialColorOnSecondaryFixedVariant</item>
-        <item name="secondaryOverview">?androidprv:attr/materialColorOnSecondaryFixed</item>
+        <item name="surfaceContainer">?attr/materialColorSurfaceContainer</item>
+        <item name="onSurfaceHome">?attr/materialColorPrimaryFixedDim</item>
+        <item name="surfaceHome">?attr/materialColorOnPrimaryFixedVariant</item>
+        <item name="secondaryHome">?attr/materialColorOnPrimaryFixed</item>
+        <item name="onSurfaceBack">?attr/materialColorTertiaryFixedDim</item>
+        <item name="surfaceBack">?attr/materialColorOnTertiaryFixedVariant</item>
+        <item name="secondaryBack">?attr/materialColorOnTertiaryFixed</item>
+        <item name="onSurfaceOverview">?attr/materialColorPrimaryFixed</item>
+        <item name="surfaceOverview">?attr/materialColorOnSecondaryFixedVariant</item>
+        <item name="secondaryOverview">?attr/materialColorOnSecondaryFixed</item>
     </style>
 
 </resources>

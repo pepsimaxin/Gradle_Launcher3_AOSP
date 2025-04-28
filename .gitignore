@@ -10,6 +10,8 @@ WallpaperPicker/.project.properties
 bin/
 .idea/
 .idea/misc.xml
+.idea/gradle.xml
+.idea/kotlinc.xml
 .gradle/
 local.properties
 build/

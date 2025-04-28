@@ -506,6 +506,9 @@
         <attr name="appIconSize" format="dimension" />
     </declare-styleable>
 
+    <attr name="colorAccentPrimaryVariant" format="color"/>
+    <attr name="colorAccentSecondaryVariant" format="color"/>
+
     <attr name="materialColorOnSecondaryFixedVariant" format="color" />
     <attr name="materialColorOnTertiaryFixedVariant" format="color" />
     <attr name="materialColorSurfaceContainerLowest" format="color" />

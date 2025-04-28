@@ -10,8 +10,6 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/SharedLibWrapper" />
-            <option value="$PROJECT_DIR$/iconloaderlib" />
           </set>
         </option>
       </GradleProjectSettings>

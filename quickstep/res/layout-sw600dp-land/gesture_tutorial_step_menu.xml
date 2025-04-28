@@ -23,7 +23,7 @@
     android:paddingTop="@dimen/gesture_tutorial_menu_padding_top"
     android:paddingBottom="@dimen/gesture_tutorial_menu_padding_bottom"
     android:paddingHorizontal="@dimen/gesture_tutorial_menu_padding_horizontal"
-    android:background="?androidprv:attr/materialColorSurfaceContainer">
+    android:background="?attr/materialColorSurfaceContainer">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/gesture_tutorial_menu_home_button"
