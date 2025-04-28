@@ -18,6 +18,12 @@
 | android_13 | ❎ 暂未适配 |
 | android_11 | ✅ 已适配 |
 
+## 📜 android.jar
+
+替换本地 SDK 中 platform 文件夹下 Android 34 的同名文件（新 jar 包融合了编译 Android14 源码后生成的 framework.jar 文件的内容）。
+
+Jar 包我放在 Release 里面了：SDK-34-android.jar -> 下载 android.jar_for_launcher，改成 android.jar 替换即可 build Success!
+
 ## 📜 Codes
 
 [https://cs.android.com/android/platform/superproject/+/master:packages/apps/Launcher3/](https://cs.android.com/android/platform/superproject/+/master:packages/apps/Launcher3/)
