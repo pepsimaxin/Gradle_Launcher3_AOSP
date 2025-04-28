@@ -93,12 +93,13 @@ android {
         main {
             res.srcDirs = ['res', 'iconloaderlib/res', 'SystemUIAnimationLib/res']
             java.srcDirs = ['src', 'src_plugins', 'iconloaderlib/src', 'iconloaderlib/src_full_lib', 'animationlib/src', 'tests/shared',
-            'SystemUIAimationLib/src']
+            'SystemUIAimationLib/src', 'viewcapturelib/src']
             manifest.srcFile 'AndroidManifest-common.xml'
             proto {
 //                srcDirs = ['protos/', 'protos_overrides/']
                 srcDirs = ['protos/',
-                           'quickstep/protos_overrides/']
+                           'quickstep/protos_overrides/',
+                'viewcapturelib/src/com/android/app/viewcapture/proto']
             }
         }
 
@@ -168,6 +169,8 @@ dependencies {
     implementation 'com.google.android.material:material:1.11.0'
     implementation 'androidx.core:core-animation:1.0.0-rc01'
     implementation 'com.google.protobuf:protobuf-javalite:3.22.3'
+    implementation 'androidx.slice:slice-core:1.0.0'
+    implementation 'androidx.slice:slice-builders:1.0.0'
     // implementation project(':IconLoader')
     // implementation project(':UiTestsLibLauncher')
     // withQuickstepImplementation project(':SharedLibWrapper')
