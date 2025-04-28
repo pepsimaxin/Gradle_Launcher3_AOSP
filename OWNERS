@@ -1,0 +1,18 @@
+# Use this reviewer by default.
+# gnl-eng@google.com (Googlers only)
+
+# People who can approve changes for submission
+#
+
+adamcohen@google.com
+captaincole@google.com
+hyunyoungs@google.com
+sunnygoyal@google.com
+twickham@google.com
+vadimt@google.com
+winsonc@google.com
+jonmiranda@google.com
+alexchau@google.com
+
+per-file FeatureFlags.java, globs = set noparent
+per-file FeatureFlags.java = sunnygoyal@google.com, winsonc@google.com, adamcohen@google.com, hyunyoungs@google.com, captaincole@google.com
